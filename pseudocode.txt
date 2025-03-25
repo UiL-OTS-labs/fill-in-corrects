@@ -1,0 +1,11 @@
+Pseudocode for fillin in accuracy column of picnaming csv files
+
+Take column S (cue)
+	if "NL", then take value in column T (nl_name) and compare it with the value in column V (response)
+		if the same, then fill in column X with 1,
+		if ., then fill in column X with NA,
+		if not the same, do nothing (leave the cell empty)
+	if not "NL" (i.e., "EN", then take the value in column U (en_name) and compare it with the value in column V (response)
+		if the same, then fill in column X with 1, 
+		if ., then fill in column X with NA, 
+		if not the same, do nothing (leave the cell empty)
