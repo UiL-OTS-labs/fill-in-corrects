@@ -29,9 +29,10 @@ def fillin_corrects(trials: list[dict]) -> list[dict]:
             trial[ACC] = NA
             continue
 
-        if trial[CUE] == NL and resp == trial[NL_NAME]:
-            trial[ACC] = 1
-        elif trial[CUE] == EN and resp == trial[EN_NAME]:
+        acceptable = trial[NL_NAME] if trial[CUE] == NL else trial[EN_NAME]
+        acceptable = [acceptable, "H_" + acceptable]
+
+        if resp in acceptable:
             trial[ACC] = 1
 
 
@@ -62,6 +63,7 @@ def open_files(fn: PathHint, suffix: PathHint) -> None:
 
     with open(outfn, "w") as output:
         writer = csv.DictWriter(output, fieldnames=rows[0].keys())
+        writer.writeheader()
         writer.writerows(rows)
 
 
